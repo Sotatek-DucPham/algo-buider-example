@@ -1,5 +1,7 @@
 # sotaflex
 
+## some tools
+
 ```
 yarn
 yarn algob gen-accounts
@@ -10,16 +12,18 @@ yarn algob help
 yarn algob console
 ```
 
-## run a local node
+## run a local example
 
 ```
 ./sandbox up
 
-./sandbox goal account list
-
 make setup-master-account
 
-yarn algob deploy
+yarn algob
+
+yarn algob deploy scripts/0-seed.js
+
+yarn algob deploy scripts/4-nft-marketplace-example.js --force
 ```
 
 ## testnet
