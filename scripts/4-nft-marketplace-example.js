@@ -188,10 +188,10 @@ async function run(runtimeEnv, deployer) {
         payFlags: {},
       },
       {
-        type: types.TransactionType.TransferAsset,
+        type: types.TransactionType.RevokeAsset,
         sign: types.SignType.LogicSignature,
         fromAccountAddr: nftEscrowLsigAddress,
-        toAccountAddr: buyer.addr,
+        recipient: buyer.addr,
         amount: 1,
         assetID: asaInfo.assetIndex,
         lsig: nftEscrowLsig,
@@ -203,6 +203,11 @@ async function run(runtimeEnv, deployer) {
 
     globalState = await readAppGlobalState(deployer, alice.addr, sscInfo.appID);
     console.log(globalState);
+
+    console.log(
+      "Buyer NFT Balance: ",
+      await balanceOf(deployer, buyer.addr, asaInfo.assetIndex)
+    );
   }
 }
 
